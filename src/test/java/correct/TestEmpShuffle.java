@@ -15,7 +15,7 @@ class TestEmpShuffle {
     EmployeeManager EM = new EmployeeManager();
 
     @BeforeEach
-    void init(){
+    void ini(){
         EM.initialize();
     }
 
