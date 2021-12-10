@@ -12,23 +12,30 @@ import main.java.EmployeeManager;
 
 class TestEmpShuffle {
 
-	EmployeeManager EM = null;
+    EmployeeManager EM = null;
 
-	@BeforeEach
+    @Test
+    @DisplayName("Pre Shuffle: Sham is the first employee")
+    void testFirstEmployee() {
+        assertEquals("Sham", EM.getEmployeeList().get(0).getName());
+    }
 
+    @Test
+    @DisplayName("Post Shuffle: Sham is NOT the first employee")
+    void testChangedFirstEmployee() {
+        EM.shuffle();
+        assertEquals("Sham", EM.getEmployeeList().get(0).getName());
+    }
 
-	@Test
-	@DisplayName("Pre Shuffle: Sham is the first employee")
+    @Test
+    @DisplayName("Post Shuffle: Sham is the last employee")
+    void testChangedLastEmployee() {
+        EM.shuffle();
+        assertEquals("Sham", EM.getEmployeeList().get(0).getName());
+    }
 
-
-	@Test
-	@DisplayName("Post Shuffle: Sham is NOT the first employee")
-
-
-	@Test
-	@DisplayName("Post Shuffle: Sham is the last employee")
-
-
-	@AfterEach
-
+    @AfterEach
+    void clear() {
+        EM = null;
+    }
 }
